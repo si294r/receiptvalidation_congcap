@@ -28,7 +28,7 @@ $receipt_type = $IS_DEVELOPMENT ? "ProductionSandbox" : "Production";
 
 $s3ClientS3->putObject(array(
     'Bucket' => "alegrium-iap",
-    'Key'    => "$aws_s3_appname/Android/$receipt_type/{$v["transaction_id"]}",
+    'Key'    => "$aws_s3_appname/Android/$receipt_type/{$transaction_id}",
     'Body'   => $receipt_data
 ));
 
