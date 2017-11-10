@@ -1,7 +1,12 @@
 <?php
 
+require '/var/www/vendor/autoload.php';
+include '/var/www/redshift-config2.php';
+
 include("config.php");
 include_once('function.php');
+
+use Aws\S3\S3Client;
 
 $json = json_decode($input, true);
 $transaction_id = $json["transaction_id"];

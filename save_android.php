@@ -12,6 +12,25 @@
 } 
  */
 
+// 1. Save file to S3
+$s3ClientS3 = new S3Client(array(
+    'credentials' => array(
+        'key' => $aws_access_key_id,
+        'secret' => $aws_secret_access_key
+    ),
+    "region" => "us-east-1",
+    "version" => "2006-03-01"
+));
+
+$receipt_type = $IS_DEVELOPMENT ? "ProductionSandbox" : "Production";
+
+$s3ClientS3->putObject(array(
+    'Bucket' => "alegrium-iap",
+    'Key'    => "$aws_s3_appname/Android/$receipt_type/{$v["transaction_id"]}",
+    'Body'   => $receipt_data
+));
+
+// 2. Save payment transaction to database    
 if ($product_type == "Subscription") {
     $product_value = $product_value.",CRYSTAL,IAP_SUBSCRIPTION";
 }
