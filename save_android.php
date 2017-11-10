@@ -1,5 +1,7 @@
 <?php
 
+use Aws\S3\S3Client;
+
 /* Example Android receipt_data
 {
   "orderId": "1798036025771755250.2895838640404644",

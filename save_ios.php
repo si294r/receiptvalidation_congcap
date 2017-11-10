@@ -1,5 +1,7 @@
 <?php
 
+use Aws\S3\S3Client;
+
 $data_string = json_encode(array(
     "password" => SHARED_SECRET,
     "receipt-data" => $receipt_data
