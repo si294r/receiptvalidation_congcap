@@ -4,6 +4,8 @@ include("/var/www/mysql-config2.php");
 
 $mydatabase = $IS_DEVELOPMENT ? "congcapdev" : "congcap";
 
+$url_static_time = "http://alegrium5.alegrium.com/congcap/cloudsave/";
+
 $aws_s3_appname = "congcap";
 
 define('CACHE_USER_DEV', "congcapdev_user_");

@@ -80,8 +80,8 @@ if ($product_type == "Subscription") {
         $union[] = "SELECT '$interval_unit' as unit, $i as col, $interval_value as unit_total";
     }
     $sql_union = implode(" UNION ", $union);
-    $sql = "INSERT INTO master_inbox (type, header, message, data, target_device, target_fb, os, status, valid_from)
-            SELECT 'reward', :title, :caption, CONCAT(:data, ',', t2.unit, ',', t2.col+1, ',', t2.unit_total), :target_device, :target_fb, 'All', 1,
+    $sql = "INSERT INTO master_inbox (title, message, reward_1, target_device, target_fb, os, status, valid_from)
+            SELECT :title, :caption, CONCAT(:data, ',', t2.unit, ',', t2.col+1, ',', t2.unit_total), :target_device, :target_fb, 'All', 1,
                 date_add(purchase_date, interval t2.col $interval_unit)
             FROM transactions_android,
             ($sql_union) t2
